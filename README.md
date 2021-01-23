@@ -1,9 +1,32 @@
-# PKUAutoSubmit (modified)
-吃饭
+# PKUAutoSubmit_yzy
+**UPDARTE 2021/1/23**
+感谢之前所有为本项目提供代码以及撰写文档的同学。本项目原为[PKUAutoSubmit](https://github.com/YOUSIKI/PKUAutoSubmit)，用于学生出入校的自动填报，但现在已是寒假，很多回家的同学不再需要填写出入校信息，而是要每天填写燕园云战“疫”。因此我将其稍作修改，变成了燕园云战“疫”的自动填报程序。其实云战“疫”本身就会根据之前填写的内容设置缺省值，如果状态无变化的话，只需要点击一下“疫情诊断”，将其设置为“健康”即可。这个项目只是让这个过程自动运行而已。
+
+项目名称改为了`PKUAutoSubmit_yzy`（yzy就是云战疫的缩写），用来和之前的项目做区分（毕竟这个只在寒假用，返校后可能又回到了原来的出入校模式）
+
+## 适用人群
+本项目适合满足以下全部条件的同学：  
+1.寒假未留校  
+2.居住地固定，且在低风险区  
+3.健康  
+
+如果发生以下事件，请您停止自动填报，向学校如实填报您的信息：  
+1.您所在的地方出现疫情  
+2.您出现发热、咳嗽等症状
+3.您的居住地发生了改变  
+4.您与确诊病例密接，或与确诊病例密接者密接，尚未解除观察  
+
+## 我的工作
+仅仅对参数以及参数的读取方式进行了修改，然后将action的触发改在了北京时间6:00 + 5分钟内随机时间  
+具体的使用方法直接看下方原项目Readme中的[hayschan](https://github.com/hayschan) 撰写的[使用文档](https://haysc.tech/2020/10/17/pku-auto-beian/)，以及[What did I do](#jump)部分
+
+# 以下是[原项目](https://github.com/YOUSIKI/PKUAutoSubmit)Readme
+
 **UPDATE 2020/10/18**
 
 感谢 [hayschan](https://github.com/hayschan) 撰写的[使用文档](https://haysc.tech/2020/10/17/pku-auto-beian/)，强烈推荐在使用本项目前阅读。
 
+<span id="jump"></span>
 ## What did I do
 
 没做什么工作，只是合并为一个 main.py 然后改了改参数读取方式。然后写了个 Github Actions 的配置文件，每天自动执行两次。你可以 fork 本仓库然后在自己仓库的 Settings/Secrets 中设置 USERNAME 和 PASSWORD 两项，一劳永逸。如果你想使用其他填报参数，请自行修改 `.github/workflows/main.yml`，参数名称参见 `main.py`。

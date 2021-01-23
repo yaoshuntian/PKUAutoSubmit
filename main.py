@@ -52,191 +52,58 @@ def login(driver, username, password, failed=0):
         print('门户登录成功！')
 
 
-def go_to_application_out(driver):
+def go_to_application(driver):
     driver.find_element_by_id('all').click()
     WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.ID, 'tag_s_stuCampusExEnReq')))
-    driver.find_element_by_id('tag_s_stuCampusExEnReq').click()
+        EC.visibility_of_element_located((By.ID, 'tag_s_epidemic')))
+    driver.find_element_by_id('tag_s_epidemic').click()
     time.sleep(TIMESLP)
     driver.switch_to.window(driver.window_handles[-1])
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.CLASS_NAME, 'el-card__body')))
-    time.sleep(TIMESLP)
-    driver.find_element_by_class_name('el-card__body').click()
-    time.sleep(TIMESLP)
     WebDriverWait(driver, TIMEOUT).until(
         EC.visibility_of_element_located((By.CLASS_NAME, 'el-input__inner')))
+    print('已进入燕园云战疫！')
 
 
-def go_to_application_in(driver):
-    driver.get('https://portal.pku.edu.cn/portal2017/#/bizCenter')
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.ID, 'all')))
-    driver.find_element_by_id('all').click()
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.ID, 'tag_s_stuCampusExEnReq')))
-    driver.find_element_by_id('tag_s_stuCampusExEnReq').click()
-    time.sleep(TIMESLP)
-    driver.switch_to.window(driver.window_handles[-1])
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.CLASS_NAME, 'el-card__body')))
-    time.sleep(TIMESLP)
-    driver.find_element_by_class_name('el-card__body').click()
-    time.sleep(TIMESLP)
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.CLASS_NAME, 'el-select')))
-
-
-def select_in_out(driver, way):
-    driver.find_element_by_class_name('el-select').click()
-    time.sleep(TIMESLP)
-    driver.find_element_by_xpath(f'//li/span[text()="{way}"]').click()
-
-
-def select_campus(driver, campus):
-    driver.find_elements_by_class_name('el-select')[1].click()
-    time.sleep(TIMESLP)
-    driver.find_element_by_xpath(f'//li/span[text()="{campus}"]').click()
-
-
-def select_destination(driver, destination):
-    driver.find_elements_by_class_name('el-select')[2].click()
-    time.sleep(TIMESLP)
-    driver.find_element_by_xpath(f'//li/span[text()="{destination}"]').click()
-
-
-def select_district(driver, district):
-    driver.find_elements_by_class_name('el-select')[3].click()
-    time.sleep(TIMESLP)
-    driver.find_element_by_xpath(f'//li/span[text()="{district}"]').click()
-
-
-def write_reason(driver, reason):
-    driver.find_element_by_class_name('el-textarea__inner').send_keys(
-        f'{reason}')
+def click_no(driver):
+    print("选择是否存在以下症状：否")
+    temp = driver.find_element_by_xpath('//*[@id="pane-daily_info_tab"]/form/div[13]/div/label[2]').click()
+    print("Done")
     time.sleep(TIMESLP)
 
-
-def write_track(driver, track):
-    driver.find_elements_by_class_name('el-textarea__inner')[1].send_keys(
-        f'{track}')
+def select_healthy(driver):
+    print("选择疫情诊断：健康")
+    driver.find_element_by_xpath('//*[@id="pane-daily_info_tab"]/form/div[14]/div/div').click()
     time.sleep(TIMESLP)
-
-
-def write_street(driver, street):
-    driver.find_elements_by_class_name('el-textarea__inner')[1].send_keys(
-        f'{street}')
+    driver.find_element_by_xpath(f'//li/span[text()="健康"]').click()
+    print("Done")
     time.sleep(TIMESLP)
-
-
-def click_check(driver):
-    driver.find_element_by_class_name('el-checkbox__label').click()
-    time.sleep(TIMESLP)
-
-
-def click_inPeking(driver):
-    driver.find_element_by_class_name('el-radio__inner').click()
-    time.sleep(TIMESLP)
-
 
 def submit(driver):
-    driver.find_element_by_xpath(
-        '//button/span[contains(text(),"保存")]').click()
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located(
-            (By.XPATH, '(//button/span[contains(text(),"提交")])[3]')))
-    driver.find_element_by_xpath(
-        '(//button/span[contains(text(),"提交")])[3]').click()
-    time.sleep(TIMESLP)
+    print("保存信息")
+    driver.find_element_by_xpath('//*[@id="pane-daily_info_tab"]/form/div[17]/div/button').click()
+    print("Done")
+    time.sleep(2*TIMESLP)
 
 
-def fill_out(driver, campus, reason, destination, track):
-    print('开始填报出校备案')
-
-    print('选择出校/入校    ', end='')
-    select_in_out(driver, '出校')
-    print('Done')
-
-    print('选择校区    ', end='')
-    select_campus(driver, campus)
-    print('Done')
-
-    print('填写出入校事由    ', end='')
-    write_reason(driver, reason)
-    print('Done')
-
-    print('选择出校目的地    ', end='')
-    select_destination(driver, destination)
-    print('Done')
-
-    print('填写出校行动轨迹    ', end='')
-    write_track(driver, track)
-    print('Done')
-
-    click_check(driver)
+def fill(driver):
+    click_no(driver)
+    select_healthy(driver)
     submit(driver)
-
-    print('出校备案填报完毕！')
-
-
-def fill_in(driver, campus, reason, habitation, district, street):
-    print('开始填报入校备案')
-
-    print('选择出校/入校    ', end='')
-    select_in_out(driver, '入校')
-    print('Done')
-
-    print('填写出入校事由    ', end='')
-    write_reason(driver, reason)
-    print('Done')
-
-    if habitation != '北京':
-        raise Exception('暂不支持京外入校备案，请手动填写')
-
-    print('选择居住地所在区    ', end='')
-    select_district(driver, district)
-    print('Done')
-
-    print('填写居住地所在街道    ', end='')
-    write_street(driver, street)
-    print('Done')
-
-    click_inPeking(driver)
-    click_check(driver)
-    submit(driver)
-
-    print('入校备案填报完毕！')
+    print('填报完毕！')
 
 
-def run(driver, username, password, campus, reason, destination, track,
-        habitation, district, street):
+def run(driver, username, password):
     login(driver, username, password)
     print('=================================')
-
-    go_to_application_out(driver)
-    fill_out(driver, campus, reason, destination, track)
-    print('=================================')
-
-    go_to_application_in(driver)
-    fill_in(driver, campus, reason, habitation, district, street)
-
-    print('=================================')
-    print('可以愉快的玩耍啦！')
+    go_to_application(driver)
+    fill(driver)
 
 
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('--username', '-u', type=str, help='用户名')
     parser.add_argument('--password', '-p', type=str, help='密码')
-    parser.add_argument('--campus', type=str, help='所在校区, 燕园、万柳、畅春园、圆明园、中关新园', default='燕园')
-    parser.add_argument('--reason', type=str, help='出校原因, eg. 吃饭', default='吃饭')
-    parser.add_argument('--destination', type=str, help='出校目的地, eg. 北京', default='北京')
-    parser.add_argument('--track', type=str, help='出校轨迹, eg. 畅春园食堂', default='畅春园')
-    parser.add_argument('--habitation', type=str, help='入校前居住地, eg. 北京', default='北京')
-    parser.add_argument('--district', type=str, help='入校前居住所在区, eg. 海淀区', default='海淀区')
-    parser.add_argument('--street', type=str, help='入校前居住所在街道, eg. 燕园街道', default='燕园街道')
     args = parser.parse_args()
-
     args_public = copy.deepcopy(args)
     args_public.password = 'xxxxxxxx'
     print('Arguments: {}'.format(args_public))
@@ -254,8 +121,6 @@ if __name__ == '__main__':
 
     driver = PhantomJS(executable_path=phantomjs_path)
 
-    run(driver, args.username, args.password, args.campus, args.reason,
-        args.destination, args.track, args.habitation, args.district,
-        args.street)
+    run(driver, args.username, args.password)
 
     driver.close()

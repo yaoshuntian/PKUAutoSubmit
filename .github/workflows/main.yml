@@ -10,7 +10,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '${random.int[0,59]} 22 * * *' # UCT时间22时，即北京时间06时，分钟随机
+    - cron: '0 22 * * *' # UCT时间22时，即北京时间06时, run的时候随机休眠 0~5 min
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -30,4 +30,5 @@ jobs:
       
       - run: |
           pip install selenium
+          sleep ${random.int[0,4]}m ${random.int[0,59]}s 
           python main.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
