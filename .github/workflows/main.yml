@@ -10,9 +10,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '15 1 * * *'
-    - cron: '45 8 * * *'
-
+    - cron: '${random.int[0,59]} 22 * * *' # UCT时间22时，即北京时间06时，分钟随机
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
