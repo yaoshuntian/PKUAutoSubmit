@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: PKUAutoSubmit
+name: PKUAutoSubmit_yzy
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the main branch
@@ -10,7 +10,8 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron:  '*/15 * * * *' # UCT时间22时，即北京时间06时
+    - cron: '15 1 * * *'
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
