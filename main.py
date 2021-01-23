@@ -72,17 +72,18 @@ def click_no(driver):
 
 def select_healthy(driver):
     print("选择疫情诊断：健康")
-    driver.find_element_by_xpath('//*[@id="pane-daily_info_tab"]/form/div[14]/div/div').click()
+    driver.find_element_by_xpath('//*[@id="pane-daily_info_tab"]/form/div[14]/div/div/div').click()
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath(f'//li/span[text()="健康"]').click()
+    driver.find_element_by_xpath("/html/body/div[2]/div[1]/div[1]/ul/li[1]").click()
     print("Done")
     time.sleep(TIMESLP)
 
 def submit(driver):
     print("保存信息")
     driver.find_element_by_xpath('//*[@id="pane-daily_info_tab"]/form/div[17]/div/button').click()
+    print(driver.find_element_by_xpath('//*[@id="pane-daily_info_tab"]/form/div[17]/div/button').text)
     print("Done")
-    time.sleep(2*TIMESLP)
+    time.sleep(TIMESLP)
 
 
 def fill(driver):
