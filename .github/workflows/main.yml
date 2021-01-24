@@ -11,6 +11,7 @@ on:
     branches: [ main ]
   schedule:
     - cron: '15 1 * * *'
+    - cron: '45 2 * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,3 +33,4 @@ jobs:
       - run: |
           pip install selenium
           python main.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
+
