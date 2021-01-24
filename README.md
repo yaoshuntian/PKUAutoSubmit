@@ -18,7 +18,7 @@
 4.您与确诊病例密接，或与确诊病例密接者密接，尚未解除观察  
 
 ## 我的工作
-仅仅对参数以及参数的读取方式进行了修改，然后将action的触发改在了北京时间6:00 + 5分钟内随机时间  
+仅仅对参数以及参数的读取方式进行了修改，然后将action的触发改在了北京时间9:15和10:45（一般来说，实际的触发会晚10~15分钟） 
 具体的使用方法直接看下方原项目Readme中的[hayschan](https://github.com/hayschan) 撰写的[使用文档](https://haysc.tech/2020/10/17/pku-auto-beian/)，以及[What did I do](#jump)部分
 
 # 以下是[原项目](https://github.com/YOUSIKI/PKUAutoSubmit)Readme
