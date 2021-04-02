@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Firefox, Chrome, PhantomJS
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
 from argparse import ArgumentParser
 from urllib.parse import quote
@@ -14,7 +15,7 @@ import os
 
 TIMEOUT = 20
 TIMESLP = 3
-
+CONFIGCODE = 1
 
 def login(driver, username, password, failed=0):
     if failed == 3:
@@ -54,14 +55,24 @@ def login(driver, username, password, failed=0):
 
 def go_to_application(driver):
     driver.find_element_by_id('all').click()
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.ID, 'tag_s_epidemic')))
-    driver.find_element_by_id('tag_s_epidemic').click()
-    time.sleep(TIMESLP)
-    driver.switch_to.window(driver.window_handles[-1])
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.visibility_of_element_located((By.CLASS_NAME, 'el-input__inner')))
-    print('已进入燕园云战疫！')
+    if CONFIGCODE == 0:
+        WebDriverWait(driver, TIMEOUT).until(
+            EC.visibility_of_element_located((By.ID, 'tag_s_epidemic')))
+        driver.find_element_by_id('tag_s_epidemic').click()
+        time.sleep(TIMESLP)
+        driver.switch_to.window(driver.window_handles[-1])
+        WebDriverWait(driver, TIMEOUT).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, 'el-input__inner')))
+        print('已进入燕园云战疫！')
+    else:
+        WebDriverWait(driver, TIMEOUT).until(
+            EC.visibility_of_element_located((By.ID, 'tag_s_stuCampusExEnReq')))
+        driver.find_element_by_id('tag_s_stuCampusExEnReq').click()
+        time.sleep(TIMESLP)
+        driver.switch_to.window(driver.window_handles[-1])
+        WebDriverWait(driver, TIMEOUT).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, 'el-card__body')))
+        print('已进入学生出入校！')
 
 
 def click_no(driver):
@@ -85,11 +96,48 @@ def submit(driver):
     print("Done")
     time.sleep(TIMESLP)
 
+# TODO
+def click_in_out(driver):
+    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[3]/a/div/div').click()
+    print("进入出入校备案")
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div/div[2]/form/div[3]/div[1]/div/div/div/button[1]').click()
+    print("加载出校申请信息")
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[8]/div/div/label/span[1]/span').click()
+    print("点击遵守")
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[9]/div/div/div/div[1]/button').click()
+    print("保存")
+    time.sleep(TIMESLP)
+    ActionChains(driver).send_keys(Keys.ENTER).perform()
+    print("确认")
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div/div[1]/div/div/div[1]/div').click()
+    print("返回上一页")
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[3]/a/div/div').click()
+    print("进入出入校备案")
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[1]/div/div/div/button[2]').click()
+    print("加载入校申请信息")
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[8]/div/div/label/span[1]/span').click()
+    print("点击遵守")
+    time.sleep(TIMESLP)
+    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[9]/div/div/div/div[1]/button').click()
+    print("保存")
+    time.sleep(TIMESLP)
+    ActionChains(driver).send_keys(Keys.ENTER).perform()
+    print("确认")
 
 def fill(driver):
-    click_no(driver)
-    select_healthy(driver)
-    submit(driver)
+    if CONFIGCODE == 0:
+        click_no(driver)
+        select_healthy(driver)
+        submit(driver)
+    else:
+        click_in_out(driver)
     print('填报完毕！')
 
 
