@@ -1,8 +1,11 @@
-# PKUAutoSubmit_yzy
+# PKUAutoSubmit
 **UPDATE 2021/4/3**
 
-两次忘了报备后，我打算把原来的自动填报的功能加上。用XPath迅速上线了这个功能。代码极其丑陋，见谅。  
-**将main.py第18行的CONFIGCODE改成0则是云战疫，改成1就是学生出入校**
+两次忘了报备后，我打算把原来的自动填报的功能加上。用XPath迅速上线了这个功能。代码极其丑陋，见谅。 
+
+现在将名字改回了**PKUAutoSubmit**，因为目前它具有填报云战疫和学生出入校两种功能。
+
+在之前[使用方法](https://haysc.tech/2020/10/17/pku-auto-beian/)的基础上，**将main.py第18行的CONFIGCODE改成0则是云战疫，改成1就是学生出入校**。
 
 **UPDARTE 2021/1/23**
 
