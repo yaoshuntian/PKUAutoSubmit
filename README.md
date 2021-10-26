@@ -1,4 +1,7 @@
 # PKUAutoSubmit
+**UPDATE 2021/10/26**
+现在使用时会报错`ImportError: cannot import name 'PhantomJS' from 'selenium.webdriver' `，估计是selenium版本更新后去除了PhantomJS，我修复了一下，每次都只使用3.141.0版本的selenium，现在可以正常用了。
+
 **UPDATE 2021/4/3**
 
 两次忘了报备后，我打算把原来的自动填报的功能加上。用XPath迅速上线了这个功能。代码极其丑陋，见谅。 
@@ -83,9 +86,10 @@ PKU一键出入校备案小工具 v1.9.1 (2020.10.10)
 #### selenium
 
 采用如下语句安装 `selenium`，支持 2.48.0 及以上版本：
+`这里时jiang13021的注释：由于高版本的selenium不支持selenium.webdriver.PhantomJS，因此我建议，使用3.141.0版本的selenium`
 
 ```
-pip3 install selenium
+pip3 install selenium==3.141.0
 ```
 
 然后就没了。惊喜吧！
