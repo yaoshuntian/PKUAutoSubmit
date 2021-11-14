@@ -1,5 +1,10 @@
 # PKUAutoSubmit
-**UPDATE 2021/10/26**
+**UPDATE 2021/11/14**   
+北京市疫情防控形势愈发严峻，我校仅限学业、科研、就业、就医4类理由可以正当出校，而且需要提前备案。因此，**如无正当理由，请勿使用PKUAutoSubmit**。
+
+从今天开始，学校的出入校备案增加了“出入校事由”选项。因此，某些Xpath发生改变，需要更新。最新的版本已更新Xpath，可以使用，但使用前需要**至少手动报备出入校一次**。
+
+**UPDATE 2021/10/26**  
 现在使用时会报错`ImportError: cannot import name 'PhantomJS' from 'selenium.webdriver' `，估计是selenium版本更新后去除了PhantomJS，我修复了一下，每次都只使用3.141.0版本的selenium，现在可以正常用了。
 
 **UPDATE 2021/4/3**
