@@ -104,7 +104,7 @@ def click_in_out(driver):
         time.sleep(TIMESLP)
     except:
         pass
-    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[2]/a/div/div').click()
+    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[3]/a/div/div').click()
     print("进入出入校备案")
     time.sleep(TIMESLP)
     driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div/div[2]/form/div[3]/div[1]/div/div/div/button[1]').click()
@@ -122,7 +122,7 @@ def click_in_out(driver):
     driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div/div[1]/div/div/div[1]/div').click()
     print("返回上一页")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[2]/a/div/div').click()
+    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[3]/a/div/div').click()
     print("进入出入校备案")
     time.sleep(TIMESLP)
     driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[1]/div/div/div/button[2]').click()
