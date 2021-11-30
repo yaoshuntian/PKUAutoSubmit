@@ -96,7 +96,7 @@ def submit(driver):
     print("Done")
     time.sleep(TIMESLP)
 
-# TODO
+
 def click_in_out(driver):
     try:
         driver.find_element_by_xpath('//*[@id="bizTip"]/div/div/div[1]/div/div/table/tbody/tr[11]/td/a').click()
@@ -104,38 +104,40 @@ def click_in_out(driver):
         time.sleep(TIMESLP)
     except:
         pass
-    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[3]/a/div/div').click()
+    driver.find_element_by_link_text('出入校备案').click()
     print("进入出入校备案")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div/div[2]/form/div[3]/div[1]/div/div/div/button[1]').click()
+    temp = driver.find_elements_by_class_name("el-button")
+    temp[1].click()
     print("加载出校申请信息")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[9]/div/div/label/span[1]/span').click()
+    driver.find_element_by_class_name("el-checkbox__inner").click()
     print("点击遵守")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[10]/div/div/div/div[1]/button').click()
+    temp[3].click()
     print("保存")
     time.sleep(TIMESLP)
     ActionChains(driver).send_keys(Keys.ENTER).perform()
-    print("确认")
+    print("提交")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div/div[1]/div/div/div[1]/div').click()
+    driver.find_element_by_class_name("el-page-header__left").click()
     print("返回上一页")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div/section/div/div/div[2]/main/div[3]/a/div/div').click()
+    driver.find_element_by_link_text('出入校备案').click()
     print("进入出入校备案")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[1]/div/div/div/button[2]').click()
+    temp = driver.find_elements_by_class_name("el-button")
+    temp[2].click()
     print("加载入校申请信息")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[9]/div/div/label/span[1]/span').click()
+    driver.find_element_by_class_name("el-checkbox__inner").click()
     print("点击遵守")
     time.sleep(TIMESLP)
-    driver.find_element_by_xpath('/html/body/div[1]/section/div/div/div[2]/main/div[1]/div[2]/form/div[3]/div[10]/div/div/div/div[1]/button').click()
+    temp[3].click()
     print("保存")
     time.sleep(TIMESLP)
     ActionChains(driver).send_keys(Keys.ENTER).perform()
-    print("确认")
+    print("提交")
 
 def fill(driver):
     if CONFIGCODE == 0:
