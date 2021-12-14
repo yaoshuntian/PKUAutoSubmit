@@ -171,10 +171,10 @@ if __name__ == '__main__':
     dir_path = os.path.dirname(os.path.abspath(__file__))
     if sys.platform == 'darwin':  # macOS
         # phantomjs_path = os.path.join('phantomjs', 'phantomjs-darwin')
-        chrome_path = os.path.join( dir_path, 'chromedriver_mac64', 'chromedriver.exe')
+        chrome_path = os.path.join( dir_path, 'chromedriver_mac64', 'chromedriver')
     elif sys.platform == 'linux':  # linux
         # phantomjs_path = os.path.join('phantomjs', 'phantomjs-linux-x86_64')
-        chrome_path = os.path.join( dir_path, 'chromedriver_linux64', 'chromedriver.exe')
+        chrome_path = os.path.join( dir_path, 'chromedriver_linux64', 'chromedriver')
     else:  # windows
         # phantomjs_path = os.path.join('phantomjs', 'phantomjs-windows.exe')
         chrome_path = os.path.join( dir_path, 'chromedriver_win32', 'chromedriver.exe')
