@@ -168,17 +168,19 @@ if __name__ == '__main__':
 
     # driver = Firefox()
     # driver = Chrome()
-
-    # if sys.platform == 'darwin':  # macOS
-    #     phantomjs_path = os.path.join('phantomjs', 'phantomjs-darwin')
-    # elif sys.platform == 'linux':  # linux
-    #     phantomjs_path = os.path.join('phantomjs', 'phantomjs-linux-x86_64')
-    # else:  # windows
-    #     phantomjs_path = os.path.join('phantomjs', 'phantomjs-windows.exe')
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    if sys.platform == 'darwin':  # macOS
+        # phantomjs_path = os.path.join('phantomjs', 'phantomjs-darwin')
+        chrome_path = os.path.join( dir_path, 'chromedriver_mac64', 'chromedriver.exe')
+    elif sys.platform == 'linux':  # linux
+        # phantomjs_path = os.path.join('phantomjs', 'phantomjs-linux-x86_64')
+        chrome_path = os.path.join( dir_path, 'chromedriver_linux64', 'chromedriver.exe')
+    else:  # windows
+        # phantomjs_path = os.path.join('phantomjs', 'phantomjs-windows.exe')
+        chrome_path = os.path.join( dir_path, 'chromedriver_win32', 'chromedriver.exe')
 
     # driver = PhantomJS(executable_path=phantomjs_path)
-    chrome_path = os.path.join( os.path.dirname(os.path.abspath(__file__)) 
-                                ,'chromedriver_win32', 'chromedriver.exe')
+    
     print(chrome_path)
     driver = webdriver.Chrome(chrome_path)
 

@@ -31,7 +31,9 @@ jobs:
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
       
       - run: |
-          sudo chmod 777 chromedriver_win32/chromedriver.exe
+          cd chromedriver_linux64
+          sudo chmod 777 chromedriver.exe
+          cd ..
           pip install selenium==3.141.0
           python main.py -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
 
