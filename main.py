@@ -1,8 +1,10 @@
+from selenium.webdriver.chrome import options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import Firefox, Chrome, PhantomJS
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
@@ -180,9 +182,12 @@ if __name__ == '__main__':
         chrome_path = os.path.join( dir_path, 'chromedriver_win32', 'chromedriver.exe')
 
     # driver = PhantomJS(executable_path=phantomjs_path)
-    
+    chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument('--headless')
     print(chrome_path)
-    driver = webdriver.Chrome(chrome_path)
+    driver = webdriver.Chrome(executable_path = chrome_path, options = chrome_options)
 
     run(driver, args.username, args.password)
 
