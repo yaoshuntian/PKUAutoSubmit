@@ -169,14 +169,16 @@ if __name__ == '__main__':
     # driver = Firefox()
     # driver = Chrome()
 
-    if sys.platform == 'darwin':  # macOS
-        phantomjs_path = os.path.join('phantomjs', 'phantomjs-darwin')
-    elif sys.platform == 'linux':  # linux
-        phantomjs_path = os.path.join('phantomjs', 'phantomjs-linux-x86_64')
-    else:  # windows
-        phantomjs_path = os.path.join('phantomjs', 'phantomjs-windows.exe')
+    # if sys.platform == 'darwin':  # macOS
+    #     phantomjs_path = os.path.join('phantomjs', 'phantomjs-darwin')
+    # elif sys.platform == 'linux':  # linux
+    #     phantomjs_path = os.path.join('phantomjs', 'phantomjs-linux-x86_64')
+    # else:  # windows
+    #     phantomjs_path = os.path.join('phantomjs', 'phantomjs-windows.exe')
 
-    driver = PhantomJS(executable_path=phantomjs_path)
+    # driver = PhantomJS(executable_path=phantomjs_path)
+    chrome_path = "chromedriver_win32\chromedriver.exe"
+    driver = webdriver.Chrome(chrome_path)
 
     run(driver, args.username, args.password)
 
