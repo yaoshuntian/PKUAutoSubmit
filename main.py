@@ -177,7 +177,7 @@ if __name__ == '__main__':
     #     phantomjs_path = os.path.join('phantomjs', 'phantomjs-windows.exe')
 
     # driver = PhantomJS(executable_path=phantomjs_path)
-    chrome_path = "chromedriver_win32\chromedriver.exe"
+    chrome_path = os.path.join('chromedriver_win32', 'chromedriver.exe')
     driver = webdriver.Chrome(chrome_path)
 
     run(driver, args.username, args.password)
