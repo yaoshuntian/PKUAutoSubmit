@@ -24,7 +24,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: browser-actions/setup-chrome@99.0
+      - uses: browser-actions/setup-chrome@stable
       - run: chrome --version
       
       - uses: actions/setup-python@v2
