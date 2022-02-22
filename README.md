@@ -1,6 +1,6 @@
 # PKUAutoSubmit
 **UPDATE 2021/12/14**  
-弃用了PhantomJS，改用Chrome
+弃用了PhantomJS，改用Chrome 11
 
 **UPDATE 2021/11/14**   
 北京市疫情防控形势愈发严峻，我校仅限学业、科研、就业、就医4类理由可以正当出校，而且需要提前备案。因此，**如无正当理由，请勿使用PKUAutoSubmit**。
